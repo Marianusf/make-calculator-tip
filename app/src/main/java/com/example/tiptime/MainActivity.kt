@@ -15,6 +15,7 @@
  */
 package com.example.tiptime
 
+import android.annotation.SuppressLint
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -42,6 +43,8 @@ import androidx.compose.material3.Switch
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextField
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.MutableState
+import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -100,14 +103,16 @@ fun TipTimeLayout() {
 }
 
 @Composable
-fun EditNumberField(
+fun EditNumberField (
     @StringRes label: Int,
     @DrawableRes leadingIcon: Int,
     keyboardOptions: KeyboardOptions,
     value: String,
     onValueChanged: (String) -> Unit,
     modifier: Modifier = Modifier
-) {
+
+)
+{
     TextField(
         value = value,
         singleLine = true,
@@ -117,6 +122,7 @@ fun EditNumberField(
         label = { Text(stringResource(label)) },
         keyboardOptions = keyboardOptions
     )
+
 }
 
 @Composable
@@ -157,11 +163,13 @@ fun TipTimeLayoutPreview() {
         TipTimeLayout()
     }
 }
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
+    var amountInput = mutableStateOf("0")
     TextField(
-        value = "",
-        onValueChange = {},
+        value = amountInput.value,
+        onValueChange = { amountInput.value = it },
         modifier = modifier
     )
 }
