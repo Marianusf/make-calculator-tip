@@ -78,7 +78,66 @@ class MainActivity : ComponentActivity() {
         }
     }
 }
+//
+//@Composable
+//fun EditNumberField (
+//    @StringRes label: Int,
+//    @DrawableRes leadingIcon: Int,
+//    keyboardOptions: KeyboardOptions,
+//    value: String,
+//    onValueChanged: (String) -> Unit,
+//    modifier: Modifier = Modifier
+//
+//)
+//{
+//    TextField(
+//        value = value,
+//        singleLine = true,
+//        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
+//        modifier = modifier,
+//        onValueChange = onValueChanged,
+//        label = { Text(stringResource(label)) },
+//        keyboardOptions = keyboardOptions
+//    )
+//
+//}
 
+@Composable
+fun RoundTheTipRow(
+    roundUp: Boolean,
+    onRoundUpChanged: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = stringResource(R.string.round_up_tip))
+        Switch(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.End),
+            checked = roundUp,
+            onCheckedChange = onRoundUpChanged
+        )
+    }
+}
+@Composable
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        singleLine = true,
+        label = { Text(stringResource(R.string.bill_amount)) },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = modifier
+    )
+}
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun TipTimeLayout() {
     var amountInput by remember { mutableStateOf("") }
@@ -115,50 +174,6 @@ fun TipTimeLayout() {
     }
 }
 
-@Composable
-fun EditNumberField (
-    @StringRes label: Int,
-    @DrawableRes leadingIcon: Int,
-    keyboardOptions: KeyboardOptions,
-    value: String,
-    onValueChanged: (String) -> Unit,
-    modifier: Modifier = Modifier
-
-)
-{
-    TextField(
-        value = value,
-        singleLine = true,
-        leadingIcon = { Icon(painter = painterResource(id = leadingIcon), null) },
-        modifier = modifier,
-        onValueChange = onValueChanged,
-        label = { Text(stringResource(label)) },
-        keyboardOptions = keyboardOptions
-    )
-
-}
-
-@Composable
-fun RoundTheTipRow(
-    roundUp: Boolean,
-    onRoundUpChanged: (Boolean) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    Row(
-        modifier = modifier.fillMaxWidth(),
-        verticalAlignment = Alignment.CenterVertically
-    ) {
-        Text(text = stringResource(R.string.round_up_tip))
-        Switch(
-            modifier = Modifier
-                .fillMaxWidth()
-                .wrapContentWidth(Alignment.End),
-            checked = roundUp,
-            onCheckedChange = onRoundUpChanged
-        )
-    }
-}
-
 /**
  * Calculates the tip based on the user input and format the tip amount
  * according to the local currency.
@@ -176,19 +191,21 @@ fun TipTimeLayoutPreview() {
         TipTimeLayout()
     }
 }
-@SuppressLint("UnrememberedMutableState")
-@Composable
-fun EditNumberField(
-    value: String,
-    onValueChange: (String) -> Unit,
-    modifier: Modifier = Modifier
-) {
-    TextField(
-        value = value,
-        onValueChange = onValueChange,
-        singleLine = true,
-        label = { Text(stringResource(R.string.bill_amount)) },
-        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
-        modifier = modifier
-    )
-}
+//@Composable
+//fun EditNumberField(
+//    @StringRes label: Int,
+//    value: String,
+//    onValueChanged: (String) -> Unit,
+//    modifier: Modifier = Modifier
+//) {
+//    TextField(
+//        label = { Text(stringResource(label),
+//        value = value,
+//        onValueChange = onValueChange,
+//        singleLine = true,
+//        label = { Text(stringResource(R.string.bill_amount)) },
+//        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+//        modifier = modifier
+//    )
+//}
+//}
