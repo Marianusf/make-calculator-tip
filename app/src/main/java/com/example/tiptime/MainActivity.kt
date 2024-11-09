@@ -79,6 +79,9 @@ class MainActivity : ComponentActivity() {
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4f0c161 (menggunakan fungsi remember untuk simpan status)
 //
 //@Composable
 //fun EditNumberField (
@@ -102,8 +105,47 @@ class MainActivity : ComponentActivity() {
 //    )
 //
 //}
+<<<<<<< HEAD
 =======
+=======
+>>>>>>> 4f0c161 (menggunakan fungsi remember untuk simpan status)
 
+@Composable
+fun RoundTheTipRow(
+    roundUp: Boolean,
+    onRoundUpChanged: (Boolean) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    Row(
+        modifier = modifier.fillMaxWidth(),
+        verticalAlignment = Alignment.CenterVertically
+    ) {
+        Text(text = stringResource(R.string.round_up_tip))
+        Switch(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentWidth(Alignment.End),
+            checked = roundUp,
+            onCheckedChange = onRoundUpChanged
+        )
+    }
+}
+@Composable
+fun EditNumberField(
+    value: String,
+    onValueChange: (String) -> Unit,
+    modifier: Modifier = Modifier
+) {
+    TextField(
+        value = value,
+        onValueChange = onValueChange,
+        singleLine = true,
+        label = { Text(stringResource(R.string.bill_amount)) },
+        keyboardOptions = KeyboardOptions(keyboardType = KeyboardType.Number),
+        modifier = modifier
+    )
+}
+@SuppressLint("UnrememberedMutableState")
 @Composable
 fun TipTimeLayout() {
     var amountInput by remember { mutableStateOf("") }
@@ -140,6 +182,7 @@ fun TipTimeLayout() {
     }
 }
 
+<<<<<<< HEAD
 @Composable
 fun EditNumberField (
     @StringRes label: Int,
@@ -236,6 +279,8 @@ fun TipTimeLayout() {
     }
 }
 
+=======
+>>>>>>> 4f0c161 (menggunakan fungsi remember untuk simpan status)
 /**
  * Calculates the tip based on the user input and format the tip amount
  * according to the local currency.
@@ -254,6 +299,9 @@ fun TipTimeLayoutPreview() {
     }
 }
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> 4f0c161 (menggunakan fungsi remember untuk simpan status)
 //@Composable
 //fun EditNumberField(
 //    @StringRes label: Int,
@@ -272,6 +320,7 @@ fun TipTimeLayoutPreview() {
 //    )
 //}
 //}
+<<<<<<< HEAD
 =======
 @SuppressLint("UnrememberedMutableState")
 @Composable
@@ -290,3 +339,5 @@ fun EditNumberField(
     )
 }
 >>>>>>> 6c81ce2 (megubah tampilan, sekarang jika dimasukkan nilai pada textfield langsung ada hasilnya automatis)
+=======
+>>>>>>> 4f0c161 (menggunakan fungsi remember untuk simpan status)
