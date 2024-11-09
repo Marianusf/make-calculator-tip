@@ -17,6 +17,9 @@ package com.example.tiptime
 
 import android.annotation.SuppressLint
 import android.os.Bundle
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.setValue
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
@@ -166,10 +169,10 @@ fun TipTimeLayoutPreview() {
 @SuppressLint("UnrememberedMutableState")
 @Composable
 fun EditNumberField(modifier: Modifier = Modifier) {
-    var amountInput = mutableStateOf("0")
+    var amountInput by remember { mutableStateOf("") }
     TextField(
-        value = amountInput.value,
-        onValueChange = { amountInput.value = it },
+        value = amountInput,
+        onValueChange = { amountInput = it },
         modifier = modifier
     )
 }
